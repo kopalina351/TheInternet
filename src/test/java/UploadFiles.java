@@ -8,16 +8,16 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
 public class UploadFiles {
-    String path = "D:\\Automation\\File_Upload\\";
+    String path = "D:\\Automation\\MyProject\\src\\main\\resources\\";
     String fileName = "Test1.txt";
-    String url_UploadFile = "https://the-internet.herokuapp.com/upload";
-    SelenideElement fileUploadButton = $(By.id("file-upload"));
-    SelenideElement fileSubmitButton = $(By.id("file-submit"));
-    SelenideElement uploadedFiles = $(By.id("uploaded-files"));
+    String urlUploadFile = "https://the-internet.herokuapp.com/upload";
+    SelenideElement fileUploadButton = $("#file-upload");
+    SelenideElement fileSubmitButton = $("#file-submit");
+    SelenideElement uploadedFiles = $("#uploaded-files");
 
     @Test
     public void fileUpload(){
-        open(url_UploadFile);
+        open(urlUploadFile);
         fileUploadButton.sendKeys(path + fileName);
         fileSubmitButton.click();
         assertThat (uploadedFiles.getText(),is(equalTo(fileName)));
