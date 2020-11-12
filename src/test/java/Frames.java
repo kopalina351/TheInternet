@@ -11,9 +11,9 @@ public class Frames {
     String urlIFrame = "https://the-internet.herokuapp.com/iframe";
     String titleIFrame = "An iFrame containing the TinyMCE WYSIWYG Editor";
     SelenideElement iFrameTitle = $(By.xpath("//h3[contains(text(),'An iFrame containing')]"));
-    SelenideElement buttonEdit =$(By.id("mceu_16-open"));
+    SelenideElement buttonEdit =$("#mceu_16-open");
     SelenideElement undoDD = $(By.xpath("//span[(contains(text(),'Undo'))]"));
-    String new_text = "Testing iFrame";
+    String newText = "Testing iFrame";
 
     @Test
     public void workWithIFrame(){
@@ -22,9 +22,9 @@ public class Frames {
         WebDriver editor = switchTo().frame("mce_0_ifr");
         String text = editor.findElement(By.id("tinymce")).getText();
         editor.findElement(By.id("tinymce")).clear();
-        editor.findElement(By.id("tinymce")).sendKeys(new_text);
-        assert (!text.equals(new_text));
-        assert (editor.findElement(By.id("tinymce")).getText().equals(new_text));
+        editor.findElement(By.id("tinymce")).sendKeys(newText);
+        assert (!text.equals(newText));
+        assert (editor.findElement(By.id("tinymce")).getText().equals(newText));
     }
 
     @Test
@@ -35,8 +35,8 @@ public class Frames {
         String text = editor.findElement(By.id("tinymce")).getText();
         editor.findElement(By.id("tinymce")).clear();
         assert (!editor.findElement(By.id("tinymce")).getText().equals(text));
-        editor.findElement(By.id("tinymce")).sendKeys(new_text);
-        assert (editor.findElement(By.id("tinymce")).getText().equals(new_text));
+        editor.findElement(By.id("tinymce")).sendKeys(newText);
+        assert (editor.findElement(By.id("tinymce")).getText().equals(newText));
         switchTo().parentFrame();
         buttonEdit.click();
         undoDD.click();
